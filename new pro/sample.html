@@ -1,0 +1,298 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .draggable {
+      width: 100px;
+      height: 100px;
+      background-color: lightblue;
+      text-align: center;
+      line-height: 100px;
+      cursor: move;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<div class="draggable" id="dragElement" draggable="true">Drag me</div>
+
+<script>
+  var isDragging = false;
+  var offsetX, offsetY;
+
+  var dragElement = document.getElementById("dragElement");
+
+  dragElement.addEventListener("dragstart", function(event) {
+    event.dataTransfer.setData("text/plain", "Drag started");
+    offsetX = event.clientX - dragElement.getBoundingClientRect().left;
+    offsetY = event.clientY - dragElement.getBoundingClientRect().top;
+  });
+
+  dragElement.addEventListener("drag", function(event) {
+    isDragging = true;
+    event.preventDefault();
+  });
+
+  document.addEventListener("dragover", function(event) {
+    if (isDragging) {
+      event.preventDefault();
+      dragElement.style.left = (event.clientX - offsetX) + "px";
+      dragElement.style.top = (event.clientY - offsetY) + "px";
+    }
+  });
+
+  document.addEventListener("dragend", function(event) {
+    isDragging = false;
+  });
+</script>
+
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Create HTML Element with JavaScript</title>
+</head>
+<body>
+
+<button id="createButton">Create Element</button>
+<div id="elementContainer"></div>
+
+<script>
+  // Get a reference to the button and the container where we'll add the element
+  const createButton = document.getElementById("createButton");
+  const elementContainer = document.getElementById("elementContainer");
+
+  // Add a click event listener to the button
+  createButton.addEventListener("click", function() {
+    // Create a new HTML element (in this case, a paragraph)
+    const newElement = document.createElement("p");
+    
+    // Set content for the new element
+    newElement.textContent = "This is a dynamically created element.";
+
+    // Add some styles (optional)
+    newElement.style.backgroundColor = "lightblue";
+    newElement.style.padding = "10px";
+
+    // Append the new element to the container
+    elementContainer.appendChild(newElement);
+  });
+</script>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create HTML Element by Drag and Drop</title>
+  <style>
+    #elementContainer {
+      width: 300px;
+      height: 300px;
+      background-color: lightgray;
+    }
+
+    .draggable {
+      width: 100px;
+      height: 30px;
+      background-color: lightblue;
+      text-align: center;
+      line-height: 30px;
+      cursor: grab;
+    }
+  </style>
+</head>
+<body>
+
+<button id="createButton" class="draggable" draggable="true">Drag me to create an element</button>
+<div id="elementContainer"></div>
+
+<script>
+  const createButton = document.getElementById("createButton");
+  const elementContainer = document.getElementById("elementContainer");
+
+  createButton.addEventListener("dragstart", function(event) {
+    event.dataTransfer.setData("text/plain", "Create Element");
+  });
+
+  elementContainer.addEventListener("dragover", function(event) {
+    event.preventDefault();
+  });
+
+  elementContainer.addEventListener("drop", function(event) {
+    event.preventDefault();
+    const data = event.dataTransfer.getData("text/plain");
+    if (data === "Create Element") {
+      const newElement = document.createElement("div");
+      newElement.className = "draggable";
+      newElement.textContent = "New Element";
+      newElement.draggable = true;
+      elementContainer.appendChild(newElement);
+    }
+  });
+</script>
+
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Create HTML Element by Drag and Drop</title>
+  <style>
+    #elementContainer {
+      width: 300px;
+      height: 300px;
+      background-color: lightgray;
+      position: relative;
+    }
+
+    .draggable {
+      width: 100px;
+      height: 30px;
+      background-color: lightblue;
+      text-align: center;
+      line-height: 30px;
+      cursor: move;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<button id="createButton" class="draggable">Drag me to create an element</button>
+<div id="elementContainer"></div>
+
+<script>
+  const createButton = document.getElementById("createButton");
+  const elementContainer = document.getElementById("elementContainer");
+
+  let isDragging = false;
+  let offsetX, offsetY;
+
+  createButton.addEventListener("mousedown", function(event) {
+    isDragging = true;
+    offsetX = event.clientX - createButton.getBoundingClientRect().left;
+    offsetY = event.clientY - createButton.getBoundingClientRect().top;
+  });
+
+  document.addEventListener("mousemove", function(event) {
+    if (isDragging) {
+      createButton.style.left = (event.clientX - offsetX) + "px";
+      createButton.style.top = (event.clientY - offsetY) + "px";
+    }
+  });
+
+  document.addEventListener("mouseup", function() {
+    isDragging = false;
+  });
+
+  elementContainer.addEventListener("drop", function(event) {
+    event.preventDefault();
+    if (isDragging) {
+      const newElement = document.createElement("div");
+      newElement.className = "draggable";
+      newElement.textContent = "New Element";
+      newElement.style.left = (event.clientX - offsetX) + "px";
+      newElement.style.top = (event.clientY - offsetY) + "px";
+      elementContainer.appendChild(newElement);
+    }
+  });
+
+  elementContainer.addEventListener("dragover", function(event) {
+    event.preventDefault();
+  });
+</script>
+
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <title>Create HTML Element by Drag and Drop</title>
+  <style>
+    #elementContainer {
+      width: 300px;
+      height: 300px;
+      background-color: lightgray;
+    }
+
+    .draggable {
+      width: 100px;
+      height: 30px;
+      background-color: lightblue;
+      text-align: center;
+      line-height: 30px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<button id="createButton" class="draggable">Drag me to create an element</button>
+<div id="elementContainer"></div>
+
+<script>
+  const createButton = document.getElementById("createButton");
+  const elementContainer = document.getElementById("elementContainer");
+
+  createButton.addEventListener("mousedown", function(event) {
+    createButton.style.position = "absolute";
+    createButton.style.zIndex = "1000";
+    let shiftX = event.clientX - createButton.getBoundingClientRect().left;
+    let shiftY = event.clientY - createButton.getBoundingClientRect().top;
+
+    moveAt(event.pageX, event.pageY);
+
+    function moveAt(pageX, pageY) {
+      createButton.style.left = pageX - shiftX + "px";
+      createButton.style.top = pageY - shiftY + "px";
+    }
+
+    function onMouseMove(event) {
+      moveAt(event.pageX, event.pageY);
+    }
+
+    document.addEventListener("mousemove", onMouseMove);
+
+    createButton.onmouseup = function() {
+      document.removeEventListener("mousemove", onMouseMove);
+      createButton.onmouseup = null;
+      elementContainer.onmouseup = null;
+
+      if (
+        event.clientX > elementContainer.getBoundingClientRect().left &&
+        event.clientX < elementContainer.getBoundingClientRect().right &&
+        event.clientY > elementContainer.getBoundingClientRect().top &&
+        event.clientY < elementContainer.getBoundingClientRect().bottom
+      ) {
+        const newElement = document.createElement("div");
+        newElement.className = "draggable";
+        newElement.textContent = "New Element";
+        newElement.style.left = createButton.style.left;
+        newElement.style.top = createButton.style.top;
+        elementContainer.appendChild(newElement);
+      }
+    };
+  });
+
+  elementContainer.addEventListener("mouseup", function() {
+    elementContainer.onmouseup = null;
+  });
+
+  elementContainer.addEventListener("dragover", function(event) {
+    event.preventDefault();
+  });
+</script>
+
+</body>
+</html> -->
+
+
+

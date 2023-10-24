@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #dropzone {
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+#draggable {
+  cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <div id="dropzone"></div>
+<button id="draggable">Drag me!</button>
+<div id="dropzone"></div>
+<div id="template" style="display: none;">
+  <li>New list item</li>
+</div>
+
+
+<script>
+    const draggable = document.getElementById('draggable');
+const dropzone = document.getElementById('dropzone');
+dropzone.addEventListener('dragover', function(event) {
+  event.preventDefault();
+});
+
+
+draggable.addEventListener('dragstart', function(event) {
+  event.dataTransfer.setData('text/html', this.outerHTML);
+});
+
+dropzone.addEventListener('drop', function(event) {
+  event.preventDefault();
+
+  const data = event.dataTransfer.getData('text/html');
+  const element = document.createElement('div');
+  element.innerHTML = data;
+
+  this.appendChild(element);
+});
+
+
+</script>
+<!-- <script>
+    const template = document.getElementById('template');
+const dropzone = document.getElementById('dropzone');
+
+template.addEventListener('dragstart', function(event) {
+  event.dataTransfer.setData('text/html', this.outerHTML);
+});
+
+dropzone.addEventListener('drop', function(event) {
+  event.preventDefault();
+
+  const data = event.dataTransfer.getData('text/html');
+  const element = document.createElement('div');
+  element.innerHTML = data;
+
+  this.appendChild(element);
+});
+
+</script> -->
+</body>
+</html>

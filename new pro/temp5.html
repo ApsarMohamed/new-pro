@@ -1,0 +1,2494 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+
+  .element {
+    width: 100px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+</head>
+<body>
+  <div class="box" id="box">
+    <button onclick="createElement('label')">Label</button>
+    <button onclick="createElement('button')">Button</button>
+    <button onclick="createElement('input', 'radio')">Radio Button</button>
+    <button onclick="createElement('select')">Dropdown</button>
+    <button onclick="createElement('a')">Navigation Link</button>
+    <button onclick="createElement('input', 'text')">Text Box</button>
+    <button onclick="createElement('input', 'checkbox')">Checkbox</button>
+    <button onclick="createElement('img')">Image</button>
+    <button onclick="createTable()">Table</button>
+  </div>
+
+  <script>
+    function createElement(elementType, inputType = null) {
+      const box = document.getElementById('box');
+
+      // Create a new element
+      const newElement = document.createElement(elementType);
+      if (inputType) {
+        newElement.type = inputType;
+      }
+
+      if (elementType === 'input') {
+        newElement.setAttribute('value', 'Placeholder');
+      } else {
+        newElement.innerHTML = 'New ' + elementType;
+      }
+
+      newElement.className = 'element';
+      newElement.style.left = '0px';
+      newElement.style.top = '0px';
+
+      // Add the new element to the box
+      box.appendChild(newElement);
+
+      // Make the new element draggable
+      makeElementDraggable(newElement);
+    }
+
+    function makeElementDraggable(element) {
+      let isDragging = false;
+
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        element.style.zIndex = 1;
+        const offsetX = e.clientX - element.getBoundingClientRect().left;
+        const offsetY = e.clientY - element.getBoundingClientRect().top;
+
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+            const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+          }
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          element.style.zIndex = 0;
+        });
+      });
+    }
+
+    function createTable() {
+      const box = document.getElementById('box');
+
+      const newTable = document.createElement('table');
+      newTable.className = 'element';
+      newTable.style.left = '0px';
+      newTable.style.top = '0px';
+
+      const newRow = document.createElement('tr');
+      const cell1 = document.createElement('td');
+      const cell2 = document.createElement('td');
+
+      cell1.innerHTML = 'Row 1, Cell 1';
+      cell2.innerHTML = 'Row 1, Cell 2';
+
+      newRow.appendChild(cell1);
+      newRow.appendChild(cell2);
+
+      newTable.appendChild(newRow);
+      box.appendChild(newTable);
+
+      makeElementDraggable(newTable);
+    }
+  </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+
+  .element {
+    width: 100px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+</head>
+<body>
+  <div class="box" id="box">
+    <button onclick="createElement('label')">Label</button>
+    <button onclick="createElement('button')">Button</button>
+    <button onclick="createElement('input', 'radio')">Radio Button</button>
+    <button onclick="createElement('select')">Dropdown</button>
+    <button onclick="createElement('a')">Navigation Link</button>
+    <button onclick="createElement('input', 'text')">Text Box</button>
+    <button onclick="createElement('input', 'checkbox')">Checkbox</button>
+    <button onclick="createElement('img')">Image</button>
+    <button onclick="createTable()">Table</button>
+  </div>
+
+  <script>
+    function createElement(elementType, inputType = null) {
+      const box = document.getElementById('box');
+
+      // Create a new element
+      const newElement = document.createElement(elementType);
+      if (inputType) {
+        newElement.type = inputType;
+      }
+
+      if (elementType === 'input') {
+        newElement.setAttribute('value', 'Placeholder');
+      } else {
+        newElement.innerHTML = 'New ' + elementType;
+      }
+
+      newElement.className = 'element';
+      newElement.style.left = '0px';
+      newElement.style.top = '0px';
+
+      // Add the new element to the box
+      box.appendChild(newElement);
+
+      // Make the new element draggable
+      makeElementDraggable(newElement);
+    }
+
+    function makeElementDraggable(element) {
+      let isDragging = false;
+
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        element.style.zIndex = 1;
+        const offsetX = e.clientX - element.getBoundingClientRect().left;
+        const offsetY = e.clientY - element.getBoundingClientRect().top;
+
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+            const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+          }
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          element.style.zIndex = 0;
+        });
+      });
+    }
+
+    function createTable() {
+      const box = document.getElementById('box');
+
+      const newTable = document.createElement('table');
+      newTable.className = 'element';
+      newTable.style.left = '0px';
+      newTable.style.top = '0px';
+
+      const newRow = document.createElement('tr');
+      const cell1 = document.createElement('td');
+      const cell2 = document.createElement('td');
+
+      cell1.innerHTML = 'Row 1, Cell 1';
+      cell2.innerHTML = 'Row 1, Cell 2';
+
+      newRow.appendChild(cell1);
+      newRow.appendChild(cell2);
+
+      newTable.appendChild(newRow);
+      box.appendChild(newTable);
+
+      makeElementDraggable(newTable);
+    }
+  </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+
+  .element {
+    width: 100px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+</head>
+<body>
+  <div class="box" id="box">
+    <button id="labelBtn">Label</button>
+    <button id="buttonBtn">Button</button>
+    <button id="radioBtn">Radio Button</button>
+    <button id="dropdownBtn">Dropdown</button>
+    <button id="linkBtn">Navigation Link</button>
+    <button id="textboxBtn">Text Box</button>
+    <button id="checkboxBtn">Checkbox</button>
+    <button id="imageBtn">Image</button>
+    <button id="tableBtn">Table</button>
+  </div>
+
+  <script>
+    const box = document.getElementById('box');
+
+    function createElement(elementType, inputType = null) {
+      const newElement = document.createElement(elementType);
+      if (inputType) {
+        newElement.type = inputType;
+      }
+
+      if (elementType === 'input') {
+        newElement.setAttribute('value', 'Placeholder');
+      } else {
+        newElement.innerHTML = 'New ' + elementType;
+      }
+
+      newElement.className = 'element';
+      newElement.style.left = '0px';
+      newElement.style.top = '0px';
+
+      box.appendChild(newElement);
+      makeElementDraggable(newElement);
+    }
+
+    function makeElementDraggable(element) {
+      let isDragging = false;
+
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        element.style.zIndex = 1;
+        const offsetX = e.clientX - element.getBoundingClientRect().left;
+        const offsetY = e.clientY - element.getBoundingClientRect().top;
+
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+            const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+          }
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          element.style.zIndex = 0;
+        });
+      });
+    }
+
+    // Add event listeners to buttons
+    document.getElementById('labelBtn').addEventListener('click', () => createElement('label'));
+    document.getElementById('buttonBtn').addEventListener('click', () => createElement('button'));
+    document.getElementById('radioBtn').addEventListener('click', () => createElement('input', 'radio'));
+    document.getElementById('dropdownBtn').addEventListener('click', () => createElement('select'));
+    document.getElementById('linkBtn').addEventListener('click', () => createElement('a'));
+    document.getElementById('textboxBtn').addEventListener('click', () => createElement('input', 'text'));
+    document.getElementById('checkboxBtn').addEventListener('click', () => createElement('input', 'checkbox'));
+    document.getElementById('imageBtn').addEventListener('click', () => createElement('img'));
+    document.getElementById('tableBtn').addEventListener('click', () => createTable());
+
+    function createTable() {
+      const newTable = document.createElement('table');
+      newTable.className = 'element';
+      newTable.style.left = '0px';
+      newTable.style.top = '0px';
+
+      const newRow = document.createElement('tr');
+      const cell1 = document.createElement('td');
+      const cell2 = document.createElement('td');
+
+      cell1.innerHTML = 'Row 1, Cell 1';
+      cell2.innerHTML = 'Row 1, Cell 2';
+
+      newRow.appendChild(cell1);
+      newRow.appendChild(cell2);
+
+      newTable.appendChild(newRow);
+      box.appendChild(newTable);
+      makeElementDraggable(newTable);
+    }
+  </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+
+  .element {
+    width: 100px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+</head>
+<body>
+  <div class="box" id="box">
+    <button id="labelBtn">Label</button>
+    <button id="buttonBtn">Button</button>
+    <button id="radioBtn">Radio Button</button>
+    <button id="dropdownBtn">Dropdown</button>
+    <button id="linkBtn">Navigation Link</button>
+    <button id="textboxBtn">Text Box</button>
+    <button id="checkboxBtn">Checkbox</button>
+    <button id="imageBtn">Image</button>
+    <button id="tableBtn">Table</button>
+  </div>
+
+  <script>
+    const box = document.getElementById('box');
+
+    function createElement(elementType, inputType = null) {
+      const newElement = document.createElement(elementType);
+      if (inputType) {
+        newElement.type = inputType;
+      }
+
+      if (elementType === 'input') {
+        newElement.setAttribute('value', 'Placeholder');
+      } else {
+        newElement.innerHTML = 'New ' + elementType;
+        newElement.title = 'Click to rename';
+        newElement.addEventListener('click', () => {
+          const newName = prompt('Enter a new name:', newElement.innerHTML);
+          if (newName !== null) {
+            newElement.innerHTML = newName;
+          }
+        });
+      }
+
+      if (elementType === 'img') {
+        newElement.alt = 'Image';
+        newElement.title = 'Hover to set image source';
+        newElement.addEventListener('mouseover', () => {
+          const newSrc = prompt('Enter the image source:');
+          if (newSrc !== null) {
+            newElement.src = newSrc;
+          }
+        });
+      }
+
+      newElement.className = 'element';
+      newElement.style.left = '0px';
+      newElement.style.top = '0px';
+
+      box.appendChild(newElement);
+      makeElementDraggable(newElement);
+    }
+
+    function makeElementDraggable(element) {
+      let isDragging = false;
+
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        element.style.zIndex = 1;
+        const offsetX = e.clientX - element.getBoundingClientRect().left;
+        const offsetY = e.clientY - element.getBoundingClientRect().top;
+
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+            const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+          }
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          element.style.zIndex = 0;
+        });
+      });
+    }
+
+    // Add event listeners to buttons
+    document.getElementById('labelBtn').addEventListener('click', () => createElement('label'));
+    document.getElementById('buttonBtn').addEventListener('click', () => createElement('button'));
+    document.getElementById('radioBtn').addEventListener('click', () => createElement('input', 'radio'));
+    document.getElementById('dropdownBtn').addEventListener('click', () => createElement('select'));
+    document.getElementById('linkBtn').addEventListener('click', () => createElement('a'));
+    document.getElementById('textboxBtn').addEventListener('click', () => createElement('input', 'text'));
+    document.getElementById('checkboxBtn').addEventListener('click', () => createElement('input', 'checkbox'));
+    document.getElementById('imageBtn').addEventListener('click', () => createElement('img'));
+    document.getElementById('tableBtn').addEventListener('click', () => createTable());
+
+    function createTable() {
+      const newTable = document.createElement('table');
+      newTable.className = 'element';
+      newTable.style.left = '0px';
+      newTable.style.top = '0px';
+
+      const newRow = document.createElement('tr');
+      const cell1 = document.createElement('td');
+      const cell2 = document.createElement('td');
+
+      cell1.innerHTML = 'Row 1, Cell 1';
+      cell2.innerHTML = 'Row 1, Cell 2';
+
+      newRow.appendChild(cell1);
+      newRow.appendChild(cell2);
+
+      newTable.appendChild(newRow);
+      box.appendChild(newTable);
+      makeElementDraggable(newTable);
+    }
+  </script>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+
+  .element {
+    width: 100px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .resizable-textbox {
+    resize: both; /* Allows for both horizontal and vertical resizing */
+    overflow: auto; /* Show scrollbar if content overflows */
+  }
+</style>
+</head>
+<body>
+  <div class="box" id="box">
+    <button id="labelBtn">Label</button>
+    <button id="buttonBtn">Button</button>
+    <button id="radioBtn">Radio Button</button>
+    <button id="dropdownBtn">Dropdown</button>
+    <button id="linkBtn">Navigation Link</button>
+    <button id="textboxBtn">Text Box</button>
+    <button id="checkboxBtn">Checkbox</button>
+    <button id="imageBtn">Image</button>
+    <button id="tableBtn">Table</button>
+  </div>
+
+  <script>
+    const box = document.getElementById('box');
+
+    function createElement(elementType, inputType = null) {
+      const newElement = document.createElement(elementType);
+      if (inputType) {
+        newElement.type = inputType;
+      }
+
+      if (elementType === 'input') {
+        if (inputType === 'text') {
+          // Create a resizable textbox
+          newElement.setAttribute('value', 'Placeholder');
+          newElement.className = 'element resizable-textbox';
+        } else if (inputType === 'checkbox') {
+          // Create a checkbox
+          newElement.setAttribute('type', 'checkbox');
+        }
+      } else {
+        newElement.innerHTML = 'New ' + elementType;
+        newElement.title = 'Click to rename';
+        newElement.addEventListener('click', () => {
+          const newName = prompt('Enter a new name:', newElement.innerHTML);
+          if (newName !== null) {
+            newElement.innerHTML = newName;
+          }
+        });
+      }
+
+      if (elementType === 'img') {
+        newElement.alt = 'Image';
+        newElement.title = 'Hover to set image source';
+        newElement.addEventListener('mouseover', () => {
+          const newSrc = prompt('Enter the image source:');
+          if (newSrc !== null) {
+            newElement.src = newSrc;
+          }
+        });
+      }
+
+      newElement.className = 'element';
+      newElement.style.left = '0px';
+      newElement.style.top = '0px';
+
+      box.appendChild(newElement);
+      makeElementDraggable(newElement);
+    }
+
+    function makeElementDraggable(element) {
+      let isDragging = false;
+
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        element.style.zIndex = 1;
+        const offsetX = e.clientX - element.getBoundingClientRect().left;
+        const offsetY = e.clientY - element.getBoundingClientRect().top;
+
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+            const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+          }
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          element.style.zIndex = 0;
+        });
+      });
+    }
+
+    // Add event listeners to buttons
+    document.getElementById('labelBtn').addEventListener('click', () => createElement('label'));
+    document.getElementById('buttonBtn').addEventListener('click', () => createElement('button'));
+    document.getElementById('radioBtn').addEventListener('click', () => createElement('input', 'radio'));
+    document.getElementById('dropdownBtn').addEventListener('click', () => createElement('select'));
+    document.getElementById('linkBtn').addEventListener('click', () => createElement('a'));
+    document.getElementById('textboxBtn').addEventListener('click', () => createElement('input', 'text'));
+    document.getElementById('checkboxBtn').addEventListener('click', () => createElement('input', 'checkbox'));
+    document.getElementById('imageBtn').addEventListener('click', () => createElement('img'));
+    document.getElementById('tableBtn').addEventListener('click', () => createTable());
+
+    function createTable() {
+      const newTable = document.createElement('table');
+      newTable.className = 'element';
+      newTable.style.left = '0px';
+      newTable.style.top = '0px';
+
+      const newRow = document.createElement('tr');
+      const cell1 = document.createElement('td');
+      const cell2 = document.createElement('td');
+
+      cell1.innerHTML = 'Row 1, Cell 1';
+      cell2.innerHTML = 'Row 1, Cell 2';
+
+      newRow.appendChild(cell1);
+      newRow.appendChild(cell2);
+
+      newTable.appendChild(newRow);
+      box.appendChild(newTable);
+      makeElementDraggable(newTable);
+    }
+  </script>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+
+  .element {
+    width: 100px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .resizable-textbox {
+    resize: both; /* Allows for both horizontal and vertical resizing */
+    overflow: auto; /* Show scrollbar if content overflows */
+  }
+</style>
+</head>
+<body>
+  <div class="box" id="box">
+    <button id="labelBtn">Label</button>
+    <button id="buttonBtn">Button</button>
+    <button id="radioBtn">Radio Button</button>
+    <button id="dropdownBtn">Dropdown</button>
+    <button id="linkBtn">Navigation Link</button>
+    <button id="textboxBtn">Text Box</button>
+    <button id="checkboxBtn">Checkbox</button>
+    <button id="imageBtn">Image</button>
+    <button id="tableBtn">Table</button>
+  </div>
+
+  <script>
+    const box = document.getElementById('box');
+
+    function createElement(elementType, inputType = null) {
+      const newElement = document.createElement(elementType);
+      if (inputType) {
+        newElement.type = inputType;
+      }
+
+      if (elementType === 'input') {
+        if (inputType === 'text') {
+          // Create a resizable textarea
+          newElement.className = 'element resizable-textbox';
+          newElement.textContent = 'Placeholder';
+        } else if (inputType === 'checkbox') {
+          // Create a checkbox
+          newElement.setAttribute('type', 'checkbox');
+        }
+      } else {
+        newElement.innerHTML = 'New ' + elementType;
+        newElement.title = 'Click to rename';
+        newElement.addEventListener('click', () => {
+          const newName = prompt('Enter a new name:', newElement.innerHTML);
+          if (newName !== null) {
+            newElement.innerHTML = newName;
+          }
+        });
+      }
+
+      if (elementType === 'img') {
+        newElement.alt = 'Image';
+        newElement.title = 'Hover to set image source';
+        newElement.addEventListener('mouseover', () => {
+          const newSrc = prompt('Enter the image source:');
+          if (newSrc !== null) {
+            newElement.src = newSrc;
+          }
+        });
+      }
+
+      newElement.className = 'element';
+      newElement.style.left = '0px';
+      newElement.style.top = '0px';
+
+      box.appendChild(newElement);
+      makeElementDraggable(newElement);
+    }
+
+    function makeElementDraggable(element) {
+      let isDragging = false;
+
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        element.style.zIndex = 1;
+        const offsetX = e.clientX - element.getBoundingClientRect().left;
+        const offsetY = e.clientY - element.getBoundingClientRect().top;
+
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+            const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+          }
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          element.style.zIndex = 0;
+        });
+      });
+    }
+
+    // Add event listeners to buttons
+    document.getElementById('labelBtn').addEventListener('click', () => createElement('label'));
+    document.getElementById('buttonBtn').addEventListener('click', () => createElement('button'));
+    document.getElementById('radioBtn').addEventListener('click', () => createElement('input', 'radio'));
+    document.getElementById('dropdownBtn').addEventListener('click', () => createElement('select'));
+    document.getElementById('linkBtn').addEventListener('click', () => createElement('a'));
+    document.getElementById('textboxBtn').addEventListener('click', () => createElement('input', 'text'));
+    document.getElementById('checkboxBtn').addEventListener('click', () => createElement('input', 'checkbox'));
+    document.getElementById('imageBtn').addEventListener('click', () => createElement('img'));
+    document.getElementById('tableBtn').addEventListener('click', () => createTable());
+
+    function createTable() {
+      const newTable = document.createElement('table');
+      newTable.className = 'element';
+      newTable.style.left = '0px';
+      newTable.style.top = '0px';
+
+      const newRow = document.createElement('tr');
+      const cell1 = document.createElement('td');
+      const cell2 = document.createElement('td');
+
+      cell1.innerHTML = 'Row 1, Cell 1';
+      cell2.innerHTML = 'Row 1, Cell 2';
+
+      newRow.appendChild(cell1);
+      newRow.appendChild(cell2);
+
+      newTable.appendChild(newRow);
+      box.appendChild(newTable);
+      makeElementDraggable(newTable);
+    }
+  </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+
+  .element {
+    width: 100px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .resizable-textbox {
+    resize: both; /* Allows for both horizontal and vertical resizing */
+    overflow: auto; /* Show scrollbar if content overflows */
+  }
+</style>
+</head>
+<body>
+  <div class="box" id="box">
+    <button id="labelBtn">Label</button>
+    <button id="buttonBtn">Button</button>
+    <button id="radioBtn">Radio Button</button>
+    <button id="dropdownBtn">Dropdown</button>
+    <button id="linkBtn">Navigation Link</button>
+    <button id="textboxBtn">Text Box</button>
+    <button id="checkboxBtn">Checkbox</button>
+    <button id="imageBtn">Image</button>
+    <button id="tableBtn">Table</button>
+  </div>
+
+  <script>
+    const box = document.getElementById('box');
+
+    function createElement(elementType, inputType = null) {
+      const newElement = document.createElement(elementType);
+      if (inputType) {
+        newElement.type = inputType;
+      }
+
+      if (elementType === 'input') {
+        if (inputType === 'text') {
+          // Create a resizable textarea
+          const textarea = document.createElement('textarea');
+          textarea.textContent = 'Placeholder';
+          textarea.className = 'element resizable-textbox';
+          newElement.appendChild(textarea);
+        } else if (inputType === 'checkbox') {
+          // Create a checkbox
+          newElement.setAttribute('type', 'checkbox');
+        }
+      } else {
+        newElement.innerHTML = 'New ' + elementType;
+        newElement.title = 'Click to rename';
+        newElement.addEventListener('click', () => {
+          const newName = prompt('Enter a new name:', newElement.innerHTML);
+          if (newName !== null) {
+            newElement.innerHTML = newName;
+          }
+        });
+      }
+
+      if (elementType === 'img') {
+        newElement.alt = 'Image';
+        newElement.title = 'Hover to set image source';
+        newElement.addEventListener('mouseover', () => {
+          const newSrc = prompt('Enter the image source:');
+          if (newSrc !== null) {
+            newElement.src = newSrc;
+          }
+        });
+      }
+
+      newElement.className = 'element';
+      newElement.style.left = '0px';
+      newElement.style.top = '0px';
+
+      box.appendChild(newElement);
+      makeElementDraggable(newElement);
+    }
+
+    function makeElementDraggable(element) {
+      let isDragging = false;
+
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        element.style.zIndex = 1;
+        const offsetX = e.clientX - element.getBoundingClientRect().left;
+        const offsetY = e.clientY - element.getBoundingClientRect().top;
+
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+            const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+          }
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          element.style.zIndex = 0;
+        });
+      });
+    }
+
+    // Add event listeners to buttons
+    document.getElementById('labelBtn').addEventListener('click', () => createElement('label'));
+    document.getElementById('buttonBtn').addEventListener('click', () => createElement('button'));
+    document.getElementById('radioBtn').addEventListener('click', () => createElement('input', 'radio'));
+    document.getElementById('dropdownBtn').addEventListener('click', () => createElement('select'));
+    document.getElementById('linkBtn').addEventListener('click', () => createElement('a'));
+    document.getElementById('textboxBtn').addEventListener('click', () => createElement('input', 'text'));
+    document.getElementById('checkboxBtn').addEventListener('click', () => createElement('input', 'checkbox'));
+    document.getElementById('imageBtn').addEventListener('click', () => createElement('img'));
+    document.getElementById('tableBtn').addEventListener('click', () => createTable());
+
+    function createTable() {
+      const newTable = document.createElement('table');
+      newTable.className = 'element';
+      newTable.style.left = '0px';
+      newTable.style.top = '0px';
+
+      const newRow = document.createElement('tr');
+      const cell1 = document.createElement('td');
+      const cell2 = document.createElement('td');
+
+      cell1.innerHTML = 'Row 1, Cell 1';
+      cell2.innerHTML = 'Row 1, Cell 2';
+
+      newRow.appendChild(cell1);
+      newRow.appendChild(cell2);
+
+      newTable.appendChild(newRow);
+      box.appendChild(newTable);
+      makeElementDraggable(newTable);
+    }
+  </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+
+  .element {
+    width: 100px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .resizable-textbox {
+    resize: both; /* Allows for both horizontal and vertical resizing */
+    overflow: auto; /* Show scrollbar if content overflows */
+  }
+
+  .preview-box {
+    width: 400px;
+    height: 200px;
+    background-color: #f7f7f7;
+    margin-top: 10px;
+    overflow: auto;
+  }
+</style>
+</head>
+<body>
+  <div class="box" id="box">
+    <button id="labelBtn">Label</button>
+    <button id="buttonBtn">Button</button>
+    <button id="radioBtn">Radio Button</button>
+    <button id="dropdownBtn">Dropdown</button>
+    <button id="linkBtn">Navigation Link</button>
+    <button id="textboxBtn">Text Box</button>
+    <button id="checkboxBtn">Checkbox</button>
+    <button id="imageBtn">Image</button>
+    <button id="tableBtn">Table</button>
+  </div>
+  <div class="preview-box" id="previewBox"></div>
+
+  <script>
+    const box = document.getElementById('box');
+    const previewBox = document.getElementById('previewBox');
+
+    function updatePreview() {
+      const elements = box.querySelectorAll('.element');
+      const clonedBox = box.cloneNode(true);
+      clonedBox.querySelectorAll('.element').forEach((element, index) => {
+        const previewElement = clonedBox.querySelectorAll('.element')[index];
+        const previewTextbox = previewElement.querySelector('.resizable-textbox');
+        if (previewTextbox) {
+          previewTextbox.textContent = '';
+        }
+      });
+      previewBox.innerHTML = '';
+      previewBox.appendChild(clonedBox);
+    }
+
+    function createElement(elementType, inputType = null) {
+      const newElement = document.createElement(elementType);
+      if (inputType) {
+        newElement.type = inputType;
+      }
+
+      if (elementType === 'input') {
+        if (inputType === 'text') {
+          // Create a resizable textarea
+          const textarea = document.createElement('textarea');
+          textarea.textContent = 'Placeholder';
+          textarea.className = 'element resizable-textbox';
+          newElement.appendChild(textarea);
+        } else if (inputType === 'checkbox') {
+          // Create a checkbox
+          newElement.setAttribute('type', 'checkbox');
+        }
+      } else {
+        newElement.innerHTML = 'New ' + elementType;
+        newElement.title = 'Click to rename';
+        newElement.addEventListener('click', () => {
+          const newName = prompt('Enter a new name:', newElement.innerHTML);
+          if (newName !== null) {
+            newElement.innerHTML = newName;
+            updatePreview();
+          }
+        });
+      }
+
+      if (elementType === 'img') {
+        newElement.alt = 'Image';
+        newElement.title = 'Hover to set image source';
+        newElement.addEventListener('mouseover', () => {
+          const newSrc = prompt('Enter the image source:');
+          if (newSrc !== null) {
+            newElement.src = newSrc;
+            updatePreview();
+          }
+        });
+      }
+
+      newElement.className = 'element';
+      newElement.style.left = '0px';
+      newElement.style.top = '0px';
+
+      box.appendChild(newElement);
+      makeElementDraggable(newElement);
+      updatePreview();
+    }
+
+    function makeElementDraggable(element) {
+      let isDragging = false;
+
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        element.style.zIndex = 1;
+        const offsetX = e.clientX - element.getBoundingClientRect().left;
+        const offsetY = e.clientY - element.getBoundingClientRect().top;
+
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+            const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+            updatePreview();
+          }
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          element.style.zIndex = 0;
+        });
+      });
+    }
+
+    // Add event listeners to buttons
+    document.getElementById('labelBtn').addEventListener('click', () => createElement('label'));
+    document.getElementById('buttonBtn').addEventListener('click', () => createElement('button'));
+    document.getElementById('radioBtn').addEventListener('click', () => createElement('input', 'radio'));
+    document.getElementById('dropdownBtn').addEventListener('click', () => createElement('select'));
+    document.getElementById('linkBtn').addEventListener('click', () => createElement('a'));
+    document.getElementById('textboxBtn').addEventListener('click', () => createElement('input', 'text'));
+    document.getElementById('checkboxBtn').addEventListener('click', () => createElement('input', 'checkbox'));
+    document.getElementById('imageBtn').addEventListener('click', () => createElement('img'));
+    document.getElementById('tableBtn').addEventListener('click', () => createTable());
+
+    function createTable() {
+      const newTable = document.createElement('table');
+      newTable.className = 'element';
+      newTable.style.left = '0px';
+      newTable.style.top = '0px';
+
+      const newRow = document.createElement('tr');
+      const cell1 = document.createElement('td');
+      const cell2 = document.createElement('td');
+
+      cell1.innerHTML = 'Row 1, Cell 1';
+      cell2.innerHTML = 'Row 1, Cell 2';
+
+      newRow.appendChild(cell1);
+      newRow.appendChild(cell2);
+
+      newTable.appendChild(newRow);
+      box.appendChild(newTable);
+      makeElementDraggable(newTable);
+      updatePreview();
+    }
+  </script>
+</body>
+</html>
+ -->
+
+ <!-- <!DOCTYPE html>
+ <html>
+ <head>
+ <style>
+   .box {
+     width: 400px;
+     height: 400px;
+     background-color: lightblue;
+     position: relative;
+   }
+ 
+   .element {
+     width: 100px;
+     height: 50px;
+     background-color: pink;
+     position: absolute;
+     cursor: move;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+ 
+   .resizable-textbox {
+     resize: both; /* Allows for both horizontal and vertical resizing */
+     overflow: auto; /* Show scrollbar if content overflows */
+   }
+ 
+   .preview-box {
+     width: 400px;
+     height: 200px;
+     background-color: #f7f7f7;
+     margin-top: 10px;
+     overflow: auto;
+   }
+ </style>
+ </head>
+ <body>
+   <div class="box" id="box">
+     <button id="labelBtn">Label</button>
+     <button id="buttonBtn">Button</button>
+     <button id="radioBtn">Radio Button</button>
+     <button id="dropdownBtn">Dropdown</button>
+     <button id="linkBtn">Navigation Link</button>
+     <button id="textboxBtn">Text Box</button>
+     <button id="checkboxBtn">Checkbox</button>
+     <button id="imageBtn">Image</button>
+     <button id="tableBtn">Table</button>
+   </div>
+   <div class="preview-box" id="previewBox"></div> 
+   <button id="previewButton">Preview</button>
+ 
+   <script>
+     const box = document.getElementById('box');
+     const previewBox = document.getElementById('previewBox');
+ 
+     function updatePreview() {
+       const elements = box.querySelectorAll('.element');
+       const clonedBox = box.cloneNode(true);
+       clonedBox.querySelectorAll('.element').forEach((element, index) => {
+         const previewElement = clonedBox.querySelectorAll('.element')[index];
+         const previewTextbox = previewElement.querySelector('.resizable-textbox');
+         if (previewTextbox) {
+           previewTextbox.textContent = '';
+         }
+       });
+       previewBox.innerHTML = '';
+       previewBox.appendChild(clonedBox);
+     }
+ 
+     function createFilePreview() {
+       const boxContent = box.innerHTML;
+       const htmlContent = `<!DOCTYPE html>
+ <html>
+ <head>
+ <style>
+   .box {
+     width: 400px;
+     height: 400px;
+     background-color: lightblue;
+     position: relative;
+   }
+ 
+   .element {
+     width: 100px;
+     height: 50px;
+     background-color: pink;
+     position: absolute;
+     cursor: move;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+ 
+   .resizable-textbox {
+     resize: both; /* Allows for both horizontal and vertical resizing */
+     overflow: auto; /* Show scrollbar if content overflows */
+   }
+ 
+   .preview-box {
+     width: 400px;
+     height: 200px;
+     background-color: #f7f7f7;
+     margin-top: 10px;
+     overflow: auto;
+   }
+ </style>
+ </head>
+ <body>
+   <div class="box">
+     ${boxContent}
+   </div>
+ </body>
+ </html>`;
+ 
+       const blob = new Blob([htmlContent], { type: 'text/html' });
+       const blobUrl = URL.createObjectURL(blob);
+ 
+       const link = document.createElement('a');
+       link.href = blobUrl;
+       link.download = 'preview.html';
+       link.click();
+ 
+       URL.revokeObjectURL(blobUrl);
+     }
+ 
+     function createElement(elementType, inputType = null) {
+       const newElement = document.createElement(elementType);
+       if (inputType) {
+         newElement.type = inputType;
+       }
+ 
+       if (elementType === 'input') {
+         if (inputType === 'text') {
+           // Create a resizable textarea
+           const textarea = document.createElement('textarea');
+           textarea.textContent = 'Placeholder';
+           textarea.className = 'element resizable-textbox';
+           newElement.appendChild(textarea);
+         } else if (inputType === 'checkbox') {
+           // Create a checkbox
+           newElement.setAttribute('type', 'checkbox');
+         }
+       } else {
+         newElement.innerHTML = 'New ' + elementType;
+         newElement.title = 'Click to rename';
+         newElement.addEventListener('click', () => {
+           const newName = prompt('Enter a new name:', newElement.innerHTML);
+           if (newName !== null) {
+             newElement.innerHTML = newName;
+             updatePreview();
+           }
+         });
+       }
+ 
+       if (elementType === 'img') {
+         newElement.alt = 'Image';
+         newElement.title = 'Hover to set image source';
+         newElement.addEventListener('mouseover', () => {
+           const newSrc = prompt('Enter the image source:');
+           if (newSrc !== null) {
+             newElement.src = newSrc;
+             updatePreview();
+           }
+         });
+       }
+ 
+       newElement.className = 'element';
+       newElement.style.left = '0px';
+       newElement.style.top = '0px';
+ 
+       box.appendChild(newElement);
+       makeElementDraggable(newElement);
+       updatePreview();
+     }
+ 
+     function makeElementDraggable(element) {
+       let isDragging = false;
+ 
+       element.addEventListener('mousedown', (e) => {
+         isDragging = true;
+         element.style.zIndex = 1;
+         const offsetX = e.clientX - element.getBoundingClientRect().left;
+         const offsetY = e.clientY - element.getBoundingClientRect().top;
+ 
+         document.addEventListener('mousemove', (e) => {
+           if (isDragging) {
+             const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+             const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+ 
+             element.style.left = `${x}px`;
+             element.style.top = `${y}px`;
+             updatePreview();
+           }
+         });
+ 
+         document.addEventListener('mouseup', () => {
+           isDragging = false;
+           element.style.zIndex = 0;
+         });
+       });
+     }
+ 
+     // Add event listeners to buttons
+     document.getElementById('labelBtn').addEventListener('click', () => createElement('label'));
+     document.getElementById('buttonBtn').addEventListener('click', () => createElement('button'));
+     document.getElementById('radioBtn').addEventListener('click', () => createElement('input', 'radio'));
+     document.getElementById('dropdownBtn').addEventListener('click', () => createElement('select'));
+     document.getElementById('linkBtn').addEventListener('click', () => createElement('a'));
+     document.getElementById('textboxBtn').addEventListener('click', () => createElement('input', 'text'));
+     document.getElementById('checkboxBtn').addEventListener('click', () => createElement('input', 'checkbox'));
+     document.getElementById('imageBtn').addEventListener('click', () => createElement('img'));
+     document.getElementById('tableBtn').addEventListener('click', () => createTable());
+ 
+     function createTable() {
+       const newTable = document.createElement('table');
+       newTable.className = 'element';
+       newTable.style.left = '0px';
+       newTable.style.top = '0px';
+ 
+       const newRow = document.createElement('tr');
+       const cell1 = document.createElement('td');
+       const cell2 = document.createElement('td');
+ 
+       cell1.innerHTML = 'Row 1, Cell 1';
+       cell2.innerHTML = 'Row 1, Cell 2';
+ 
+       newRow.appendChild(cell1);
+       newRow.appendChild(cell2);
+ 
+       newTable.appendChild(newRow);
+       box.appendChild(newTable);
+       makeElementDraggable(newTable);
+       updatePreview();
+     }
+ 
+     // Add event listener to the Preview button
+     document.getElementById('previewButton').addEventListener('click', createFilePreview);
+   </script>
+ </body>
+ </html> -->
+ 
+ <!-- <!DOCTYPE html>
+ <html>
+ <head>
+ <style>
+   .box {
+     width: 400px;
+     height: 400px;
+     background-color: lightblue;
+     position: relative;
+   }
+ 
+   .element {
+     width: 100px;
+     height: 50px;
+     background-color: pink;
+     position: absolute;
+     cursor: move;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+ 
+   .resizable-textbox {
+     resize: both; /* Allows for both horizontal and vertical resizing */
+     overflow: auto; /* Show scrollbar if content overflows */
+   }
+ </style>
+ </head>
+ <body>
+   <div class="box" id="box">
+     <button id="labelBtn">Label</button>
+     <button id="buttonBtn">Button</button>
+     <button id="radioBtn">Radio Button</button>
+     <button id="dropdownBtn">Dropdown</button>
+     <button id="linkBtn">Navigation Link</button>
+     <button id="textboxBtn">Text Box</button>
+     <button id="checkboxBtn">Checkbox</button>
+     <button id="imageBtn">Image</button>
+     <button id="tableBtn">Table</button>
+     <button id="previewButton">Preview</button>
+   </div>
+ 
+   <script>
+     const box = document.getElementById('box');
+ 
+     function updatePreview() {
+       // Create a Blob containing the HTML content of the box
+       const htmlContent = `<!DOCTYPE html>
+ <html>
+ <head>
+ <style>
+   .box {
+     width: 400px;
+     height: 400px;
+     background-color: lightblue;
+     position: relative;
+   }
+   .element {
+     width: 100px;
+     height: 50px;
+     background-color: pink;
+     position: absolute;
+     cursor: move;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+   .resizable-textbox {
+     resize: both;
+     overflow: auto;
+   }
+ </style>
+ </head>
+ <body>
+   <div class="box">
+     ${box.innerHTML}
+   </div>
+ </body>
+ </html>`;
+ 
+       const blob = new Blob([htmlContent], { type: 'text/html' });
+       const blobUrl = URL.createObjectURL(blob);
+ 
+       // Create a link to download the preview
+       const link = document.createElement('a');
+       link.href = blobUrl;
+       link.download = 'preview.html';
+       link.click();
+ 
+       // Clean up by revoking the URL
+       URL.revokeObjectURL(blobUrl);
+     }
+ 
+     function createElement(elementType, inputType = null) {
+       const newElement = document.createElement(elementType);
+       if (inputType) {
+         newElement.type = inputType;
+       }
+ 
+       if (elementType === 'input') {
+         if (inputType === 'text') {
+           // Create a resizable textarea
+           const textarea = document.createElement('textarea');
+           textarea.textContent = 'Placeholder';
+           textarea.className = 'element resizable-textbox';
+           newElement.appendChild(textarea);
+         } else if (inputType === 'checkbox') {
+           // Create a checkbox
+           newElement.setAttribute('type', 'checkbox');
+         }
+       } else {
+         newElement.innerHTML = 'New ' + elementType;
+         newElement.title = 'Click to rename';
+         newElement.addEventListener('click', () => {
+           const newName = prompt('Enter a new name:', newElement.innerHTML);
+           if (newName !== null) {
+             newElement.innerHTML = newName;
+             updatePreview();
+           }
+         });
+       }
+ 
+       if (elementType === 'img') {
+         newElement.alt = 'Image';
+         newElement.title = 'Hover to set image source';
+         newElement.addEventListener('mouseover', () => {
+           const newSrc = prompt('Enter the image source:');
+           if (newSrc !== null) {
+             newElement.src = newSrc;
+             updatePreview();
+           }
+         });
+       }
+ 
+       newElement.className = 'element';
+       newElement.style.left = '0px';
+       newElement.style.top = '0px';
+ 
+       box.appendChild(newElement);
+       makeElementDraggable(newElement);
+       updatePreview();
+     }
+ 
+     function makeElementDraggable(element) {
+       let isDragging = false;
+ 
+       element.addEventListener('mousedown', (e) => {
+         isDragging = true;
+         element.style.zIndex = 1;
+         const offsetX = e.clientX - element.getBoundingClientRect().left;
+         const offsetY = e.clientY - element.getBoundingClientRect().top;
+ 
+         document.addEventListener('mousemove', (e) => {
+           if (isDragging) {
+             const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+             const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+ 
+             element.style.left = `${x}px`;
+             element.style.top = `${y}px`;
+             updatePreview();
+           }
+         });
+ 
+         document.addEventListener('mouseup', () => {
+           isDragging = false;
+           element.style.zIndex = 0;
+         });
+       });
+     }
+ 
+     // Add event listeners to buttons
+     document.getElementById('labelBtn').addEventListener('click', () => createElement('label'));
+     document.getElementById('buttonBtn').addEventListener('click', () => createElement('button'));
+     document.getElementById('radioBtn').addEventListener('click', () => createElement('input', 'radio'));
+     document.getElementById('dropdownBtn').addEventListener('click', () => createElement('select'));
+     document.getElementById('linkBtn').addEventListener('click', () => createElement('a'));
+     document.getElementById('textboxBtn').addEventListener('click', () => createElement('input', 'text'));
+     document.getElementById('checkboxBtn').addEventListener('click', () => createElement('input', 'checkbox'));
+     document.getElementById('imageBtn').addEventListener('click', () => createElement('img'));
+     document.getElementById('tableBtn').addEventListener('click', () => createTable());
+ 
+     function createTable() {
+       const newTable = document.createElement('table');
+       newTable.className = 'element';
+       newTable.style.left = '0px';
+       newTable.style.top = '0px';
+ 
+       const newRow = document.createElement('tr');
+       const cell1 = document.createElement('td');
+       const cell2 = document.createElement('td');
+ 
+       cell1.innerHTML = 'Row 1, Cell 1';
+       cell2.innerHTML = 'Row 1, Cell 2';
+ 
+       newRow.appendChild(cell1);
+       newRow.appendChild(cell2);
+ 
+       newTable.appendChild(newRow);
+       box.appendChild(newTable);
+       makeElementDraggable(newTable);
+       updatePreview();
+     }
+ 
+     // Add event listener to the Preview button
+     document.getElementById('previewButton').addEventListener('click', updatePreview);
+   </script>
+ </body>
+ </html>
+  -->
+
+
+  <!-- <!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+
+  .element {
+    width: 100px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .resizable-textbox {
+    resize: both; /* Allows for both horizontal and vertical resizing */
+    overflow: auto; /* Show scrollbar if content overflows */
+  }
+</style>
+</head>
+<body>
+  <div class="box" id="box">
+    <button id="labelBtn">Label</button>
+    <button id="buttonBtn">Button</button>
+    <button id="radioBtn">Radio Button</button>
+    <button id="dropdownBtn">Dropdown</button>
+    <button id="linkBtn">Navigation Link</button>
+    <button id="textboxBtn">Text Box</button>
+    <button id="checkboxBtn">Checkbox</button>
+    <button id="imageBtn">Image</button>
+    <button id="tableBtn">Table</button>
+    <button id="previewButton">Preview</button>
+  </div>
+
+  <script>
+    const box = document.getElementById('box');
+
+    function updatePreview() {
+      // Create a Blob containing the HTML content of the box
+      const htmlContent = `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+  .element {
+    width: 100px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .resizable-textbox {
+    resize: both;
+    overflow: auto;
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    ${box.innerHTML}
+  </div>
+</body>
+</html>`;
+
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const blobUrl = URL.createObjectURL(blob);
+
+      // Create a link to download the preview
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = 'preview.html';
+      link.click();
+
+      // Clean up by revoking the URL
+      URL.revokeObjectURL(blobUrl);
+    }
+
+    function createElement(elementType, inputType = null) {
+      const newElement = document.createElement(elementType);
+      if (inputType) {
+        newElement.type = inputType;
+      }
+
+      if (elementType === 'input') {
+        if (inputType === 'text') {
+          // Create a resizable textarea
+          const textarea = document.createElement('textarea');
+          textarea.textContent = 'Placeholder';
+          textarea.className = 'element resizable-textbox';
+          newElement.appendChild(textarea);
+        } else if (inputType === 'checkbox') {
+          // Create a checkbox
+          newElement.setAttribute('type', 'checkbox');
+        }
+      } else {
+        newElement.innerHTML = 'New ' + elementType;
+        newElement.title = 'Click to rename';
+        newElement.addEventListener('click', () => {
+          const newName = prompt('Enter a new name:', newElement.innerHTML);
+          if (newName !== null) {
+            newElement.innerHTML = newName;
+            updatePreview();
+          }
+        });
+      }
+
+      if (elementType === 'img') {
+        newElement.alt = 'Image';
+        newElement.title = 'Hover to set image source';
+        newElement.addEventListener('mouseover', () => {
+          const newSrc = prompt('Enter the image source:');
+          if (newSrc !== null) {
+            newElement.src = newSrc;
+            updatePreview();
+          }
+        });
+      }
+
+      newElement.className = 'element';
+      newElement.style.left = '0px';
+      newElement.style.top = '0px';
+
+      box.appendChild(newElement);
+      makeElementDraggable(newElement);
+      updatePreview();
+    }
+
+    function makeElementDraggable(element) {
+      let isDragging = false;
+
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        element.style.zIndex = 1;
+        const offsetX = e.clientX - element.getBoundingClientRect().left;
+        const offsetY = e.clientY - element.getBoundingClientRect().top;
+
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+            const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+            updatePreview();
+          }
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          element.style.zIndex = 0;
+        });
+      });
+    }
+
+    // Add event listeners to buttons
+    document.getElementById('labelBtn').addEventListener('click', () => createElement('label'));
+    document.getElementById('buttonBtn').addEventListener('click', () => createElement('button'));
+    document.getElementById('radioBtn').addEventListener('click', () => createElement('input', 'radio'));
+    document.getElementById('dropdownBtn').addEventListener('click', () => createElement('select'));
+    document.getElementById('linkBtn').addEventListener('click', () => createElement('a'));
+    document.getElementById('textboxBtn').addEventListener('click', () => createElement('input', 'text'));
+    document.getElementById('checkboxBtn').addEventListener('click', () => createElement('input', 'checkbox'));
+    document.getElementById('imageBtn').addEventListener('click', () => createElement('img'));
+    document.getElementById('tableBtn').addEventListener('click', () => createTable());
+
+    function createTable() {
+      const newTable = document.createElement('table');
+      newTable.className = 'element';
+      newTable.style left = '0px';
+      newTable.style top = '0px';
+
+      const newRow = document.createElement('tr');
+      const cell1 = document.createElement('td');
+      const cell2 = document.createElement('td');
+
+      cell1.innerHTML = 'Row 1, Cell 1';
+      cell2.innerHTML = 'Row 1, Cell 2';
+
+      newRow.appendChild(cell1);
+      newRow.appendChild(cell2);
+
+      newTable.appendChild(newRow);
+      box.appendChild(newTable);
+      makeElementDraggable(newTable);
+      updatePreview();
+    }
+    
+    // Add event listener to the Preview button
+    document.getElementById('previewButton').addEventListener('click', updatePreview);
+  </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+
+  .element {
+    width: 100px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .resizable-textbox {
+    resize: both; /* Allows for both horizontal and vertical resizing */
+    overflow: auto; /* Show scrollbar if content overflows */
+  }
+</style>
+</head>
+<body>
+  <div class="box" id="box">
+    <button id="labelBtn">Label</button>
+    <button id="buttonBtn">Button</button>
+    <button id="radioBtn">Radio Button</button>
+    <button id="dropdownBtn">Dropdown</button>
+    <button id="linkBtn">Navigation Link</button>
+    <button id="textboxBtn">Text Box</button>
+    <button id="checkboxBtn">Checkbox</button>
+    <button id="imageBtn">Image</button>
+    <button id="tableBtn">Table</button>
+    <button id="previewButton">Preview</button>
+  </div>
+
+  <script>
+    const box = document.getElementById('box');
+
+    function createElement(elementType, inputType = null) {
+      const newElement = document.createElement(elementType);
+      if (inputType) {
+        newElement.type = inputType;
+      }
+
+      if (elementType === 'input') {
+        if (inputType === 'text') {
+          // Create a resizable textarea
+          const textarea = document.createElement('textarea');
+          textarea.textContent = 'Placeholder';
+          textarea.className = 'element resizable-textbox';
+          newElement.appendChild(textarea);
+        } else if (inputType === 'checkbox') {
+          // Create a checkbox
+          newElement.setAttribute('type', 'checkbox');
+        }
+      } else {
+        if (elementType === 'a') {
+          // Create a link with user-defined URL
+          const linkUrl = prompt('Enter the URL for the link:');
+          if (linkUrl !== null) {
+            newElement.href = linkUrl;
+            newElement.addEventListener('click', (event) => {
+              event.preventDefault(); // Prevent the default link behavior
+            });
+          }
+        }
+        newElement.innerHTML = 'New ' + elementType;
+        newElement.title = 'Click to rename';
+        newElement.addEventListener('click', () => {
+          const newName = prompt('Enter a new name:', newElement.innerHTML);
+          if (newName !== null) {
+            newElement.innerHTML = newName;
+          }
+        });
+      }
+
+      if (elementType === 'img') {
+        newElement.alt = 'Image';
+        newElement.title = 'Hover to set image source';
+        newElement.addEventListener('mouseover', () => {
+          const newSrc = prompt('Enter the image source:');
+          if (newSrc !== null) {
+            newElement.src = newSrc;
+          }
+        });
+      }
+
+      newElement.className = 'element';
+      newElement.style.left = '0px';
+      newElement.style.top = '0px';
+
+      box.appendChild(newElement);
+      makeElementDraggable(newElement);
+    }
+
+    function makeElementDraggable(element) {
+      let isDragging = false;
+
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        element.style.zIndex = 1;
+        const offsetX = e.clientX - element.getBoundingClientRect().left;
+        const offsetY = e.clientY - element.getBoundingClientRect().top;
+
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+            const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+          }
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          element.style.zIndex = 0;
+        });
+      });
+    }
+
+    // Add event listeners to buttons
+    document.getElementById('labelBtn').addEventListener('click', () => createElement('label'));
+    document.getElementById('buttonBtn').addEventListener('click', () => createElement('button'));
+    document.getElementById('radioBtn').addEventListener('click', () => createElement('input', 'radio'));
+    document.getElementById('dropdownBtn').addEventListener('click', () => createElement('select'));
+    document.getElementById('linkBtn').addEventListener('click', () => createElement('a'));
+    document.getElementById('textboxBtn').addEventListener('click', () => createElement('input', 'text'));
+    document.getElementById('checkboxBtn').addEventListener('click', () => createElement('input', 'checkbox'));
+    document.getElementById('imageBtn').addEventListener('click', () => createElement('img'));
+    document.getElementById('tableBtn').addEventListener('click', () => createTable());
+
+    // function createTable() {
+    //   const newTable = document.createElement('table');
+    //   newTable.className = 'element';
+    //   newTable.style.left = '0px';
+    //   newTable.style.top = '0px';
+
+    //   const newRow = document.createElement('tr');
+    //   const cell1 = document.createElement('td');
+    //   const cell2 = document.createElement('td');
+
+    //   cell1.innerHTML = 'Row 1, Cell 1';
+    //   cell2.innerHTML = 'Row 1, Cell 2';
+
+    //   newRow.appendChild(cell1);
+    //   newRow.appendChild(cell2);
+
+    //   newTable.appendChild(newRow);
+    //   box.appendChild(newTable);
+    //   makeElementDraggable(newTable);
+    // }
+    function createTable() {
+      const newTable = document.createElement('table');
+      newTable.className = 'element';
+      newTable.style.left = '0px';
+      newTable.style.top = '0px';
+
+      for (let i = 0; i < 3; i++) {
+        const newRow = document.createElement('tr');
+        for (let j = 0; j < 3; j++) {
+          const cell = document.createElement('td');
+          cell.innerHTML = 'Cell ' + (i * 3 + j + 1);
+          cell.addEventListener('click', () => {
+            const newValue = prompt('Enter a new value:', cell.innerHTML);
+            if (newValue !== null) {
+              cell.innerHTML = newValue;
+            }
+          });
+          newRow.appendChild(cell);
+        }
+        newTable.appendChild(newRow);
+      }
+
+      box.appendChild(newTable);
+      makeElementDraggable(newTable);
+    }
+
+    // Add event listener to the Preview button
+    document.getElementById('previewButton').addEventListener('click', () => {
+      // Create a Blob containing the HTML content of the box
+      const htmlContent = `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+  .element {
+    width: 100px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .resizable-textbox {
+    resize: both;
+    overflow: auto;
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    ${box.innerHTML}
+  </div>
+</body>
+</html>`;
+
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const blobUrl = URL.createObjectURL(blob);
+
+      // Create a link to download the preview
+      const link = document.createElement('a');
+      link.href = blobUrl;
+      link.download = 'preview.html';
+      link.click();
+
+      // Clean up by revoking the URL
+      URL.revokeObjectURL(blobUrl);
+    });
+  </script>
+</body>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+
+  .element {
+    width: 100px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .resizable-textbox {
+    resize: both; /* Allows for both horizontal and vertical resizing */
+    overflow: auto; /* Show scrollbar if content overflows */
+  }
+  
+  table {
+    border-collapse: collapse;
+  }
+  td {
+    border: 1px solid black;
+    padding: 4px;
+  }
+</style>
+</head>
+<body>
+  <button id="previewButtonOutside">Preview Outside</button>
+  <div class="box" id="box">
+    <button id="labelBtn">Label</button>
+    <button id="buttonBtn">Button</button>
+    <button id="radioBtn">Radio Button</button>
+    <button id="dropdownBtn">Dropdown</button>
+    <button id="linkBtn">Navigation Link</button>
+    <button id="textboxBtn">Text Box</button>
+    <button id="checkboxBtn">Checkbox</button>
+    <button id="imageBtn">Image</button>
+    <button id="tableBtn">Table</button>
+    <button id="previewButton">Preview Inside</button>
+  </div>
+
+  <script>
+    const box = document.getElementById('box');
+
+    function createElement(elementType, inputType = null) {
+      const newElement = document.createElement(elementType);
+      if (inputType) {
+        newElement.type = inputType;
+      }
+
+      if (elementType === 'input') {
+        if (inputType === 'text') {
+          // Create a resizable textarea
+          const textarea = document.createElement('textarea');
+          textarea.textContent = 'Placeholder';
+          textarea.className = 'element resizable-textbox';
+          newElement.appendChild(textarea);
+        } else if (inputType === 'checkbox') {
+          // Create a checkbox
+          newElement.setAttribute('type', 'checkbox');
+        }
+      } else {
+        if (elementType === 'a') {
+          // Create a link with user-defined URL
+          const linkUrl = prompt('Enter the URL for the link:');
+          if (linkUrl !== null) {
+            newElement.href = linkUrl;
+            newElement.addEventListener('click', (event) => {
+              event.preventDefault(); // Prevent the default link behavior
+            });
+          }
+        }
+        newElement.innerHTML = 'New ' + elementType;
+        newElement.title = 'Click to rename';
+        newElement.addEventListener('click', () => {
+          const newName = prompt('Enter a new name:', newElement.innerHTML);
+          if (newName !== null) {
+            newElement.innerHTML = newName;
+          }
+        });
+      }
+
+      if (elementType === 'img') {
+        newElement.alt = 'Image';
+        newElement.title = 'Hover to set image source';
+        newElement.addEventListener('mouseover', () => {
+          const newSrc = prompt('Enter the image source:');
+          if (newSrc !== null) {
+            newElement.src = newSrc;
+          }
+        });
+      }
+
+      newElement.className = 'element';
+      newElement.style.left = '0px';
+      newElement.style.top = '0px';
+
+      box.appendChild(newElement);
+      makeElementDraggable(newElement);
+    }
+
+    function makeElementDraggable(element) {
+      let isDragging = false;
+
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        element.style.zIndex = 1;
+        const offsetX = e.clientX - element.getBoundingClientRect().left;
+        const offsetY = e.clientY - element.getBoundingClientRect().top;
+
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+            const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+          }
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          element.style.zIndex = 0;
+        });
+      });
+    }
+
+    // Add event listeners to buttons
+    document.getElementById('labelBtn').addEventListener('click', () => createElement('label'));
+    document.getElementById('buttonBtn').addEventListener('click', () => createElement('button'));
+    document.getElementById('radioBtn').addEventListener('click', () => createElement('input', 'radio'));
+    document.getElementById('dropdownBtn').addEventListener('click', () => createElement('select'));
+    document.getElementById('linkBtn').addEventListener('click', () => createElement('a'));
+    document.getElementById('textboxBtn').addEventListener('click', () => createElement('input', 'text'));
+    document.getElementById('checkboxBtn').addEventListener('click', () => createElement('input', 'checkbox'));
+    document.getElementById('imageBtn').addEventListener('click', () => createElement('img'));
+    document.getElementById('tableBtn').addEventListener('click', () => createTable());
+
+    function createTable() {
+      const newTable = document.createElement('table');
+      newTable.className = 'element';
+      newTable.style.left = '0px';
+      newTable.style.top = '0px';
+
+      for (let i = 0; i < 3; i++) {
+        const newRow = document.createElement('tr');
+        for (let j = 0; j < 3; j++) {
+          const cell = document.createElement('td');
+          cell.innerHTML = 'Cell ' + (i * 3 + j + 1);
+          cell.addEventListener('click', () => {
+            const newValue = prompt('Enter a new value:', cell.innerHTML);
+            if (newValue !== null) {
+              cell.innerHTML = newValue;
+            }
+          });
+          newRow.appendChild(cell);
+        }
+        newTable.appendChild(newRow);
+      }
+
+      box.appendChild(newTable);
+      makeElementDraggable(newTable);
+    }
+
+    // Add event listener to the "Preview Outside" button
+    document.getElementById('previewButtonOutside').addEventListener('click', () => {
+      // Create a Blob containing the HTML content of the box
+      const htmlContent = `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+  .element {
+    width: 100px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .resizable-textbox {
+    resize: both;
+    overflow: auto;
+  }
+  table {
+    border-collapse: collapse;
+  }
+  td {
+    border: 1px solid black;
+    padding: 4px;
+  }
+</style>
+</head>
+<body>
+  <div class="box">
+    ${box.innerHTML}
+  </div>
+</body>
+</html>`;
+
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+
+      // Open the preview in a new tab
+      window.open(url, '_blank');
+    });
+  </script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .box {
+      width: 400px;
+      height: 400px;
+      background-color: lightblue;
+      position: relative;
+    }
+
+    .element {
+      width: 100px;
+      height: 50px;
+      background-color: pink;
+      position: absolute;
+      cursor: move;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .resizable-textbox {
+      resize: both;
+      overflow: auto;
+    }
+    
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      border: 1px solid black;
+      padding: 4px;
+    }
+  </style>
+</head>
+<body>
+  <button id="previewButtonOutside">Preview Outside</button>
+  <div class="box" id="box">
+    <button id="labelBtn">Label</button>
+    <button id="buttonBtn">Button</button>
+    <button id="radioBtn">Radio Button</button>
+    <button id="dropdownBtn">Dropdown</button>
+    <button id="linkBtn">Navigation Link</button>
+    <button id="textboxBtn">Text Box</button>
+    <button id="checkboxBtn">Checkbox</button>
+    <button id="imageBtn">Image</button>
+    <button id="tableBtn">Table</button>
+    <button id="previewButton">Preview Inside</button>
+  </div>
+
+  <script>
+    const box = document.getElementById('box');
+  
+    function createElement(elementType, inputType = null) {
+      const newElement = document.createElement(elementType);
+      if (inputType) {
+        newElement.type = inputType;
+      }
+  
+      if (elementType === 'input') {
+        if (inputType === 'text') {
+          // Create a resizable textarea
+          const textarea = document.createElement('textarea');
+          textarea.textContent = 'Placeholder';
+          textarea.className = 'element resizable-textbox';
+          newElement.appendChild(textarea);
+        } else if (inputType === 'checkbox') {
+          // Create a checkbox
+          newElement.setAttribute('type', 'checkbox');
+        }
+      } else {
+        if (elementType === 'a') {
+          // Create a link with user-defined URL
+          const linkUrl = prompt('Enter the URL for the link:');
+          if (linkUrl !== null) {
+            newElement.href = linkUrl;
+            newElement.addEventListener('click', (event) => {
+              event.preventDefault(); // Prevent the default link behavior
+            });
+          }
+          newElement.innerHTML = 'New ' + elementType;
+          newElement.title = 'Click to rename';
+          newElement.addEventListener('click', () => {
+            const newName = prompt('Enter a new name:', newElement.innerHTML);
+            if (newName !== null) {
+              newElement.innerHTML = newName;
+            }
+          });
+        }
+      }
+  
+      if (elementType === 'img') {
+        newElement.alt = 'Image';
+        newElement.title = 'Hover to set image source';
+        newElement.addEventListener('mouseover', () => {
+          const newSrc = prompt('Enter the image source:');
+          if (newSrc !== null) {
+            newElement.src = newSrc;
+          }
+        });
+      }
+  
+      newElement.className = 'element';
+      newElement.style.left = '0px';
+      newElement.style.top = '0px';
+  
+      box.appendChild(newElement);
+      makeElementDraggable(newElement);
+    }
+  
+    function makeElementDraggable(element) {
+      let isDragging = false;
+  
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        element.style.zIndex = 1;
+        const offsetX = e.clientX - element.getBoundingClientRect().left;
+        const offsetY = e.clientY - element.getBoundingClientRect().top;
+  
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+            const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+  
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+          }
+        });
+  
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          element.style.zIndex = 0;
+        });
+      });
+    }
+  
+    // Add event listeners to buttons
+    document.getElementById('labelBtn').addEventListener('click', () => createElement('label'));
+    document.getElementById('buttonBtn').addEventListener('click', () => createElement('button'));
+    document.getElementById('radioBtn').addEventListener('click', () => createElement('input', 'radio'));
+    document.getElementById('dropdownBtn').addEventListener('click', () => createElement('select'));
+    document.getElementById('linkBtn').addEventListener('click', () => createElement('a'));
+    document.getElementById('textboxBtn').addEventListener('click', () => createElement('input', 'text'));
+    document.getElementById('checkboxBtn').addEventListener('click', () => createElement('input', 'checkbox'));
+    document.getElementById('imageBtn').addEventListener('click', () => createElement('img'));
+    document.getElementById('tableBtn').addEventListener('click', () => createTable());
+  
+    function createTable() {
+      const newTable = document.createElement('table');
+      newTable.className = 'element';
+      newTable.style.left = '0px';
+      newTable.style.top = '0px';
+  
+      for (let i = 0; i < 3; i++) {
+        const newRow = document.createElement('tr');
+        for (let j = 0; j < 3; j++) {
+          const cell = document.createElement('td');
+          cell.innerHTML = 'Cell ' + (i * 3 + j + 1);
+          cell.addEventListener('click', () => {
+            const newValue = prompt('Enter a new value:', cell.innerHTML);
+            if (newValue !== null) {
+              cell.innerHTML = newValue;
+            }
+          });
+          newRow.appendChild(cell);
+        }
+        newTable.appendChild(newRow);
+      }
+  
+      box.appendChild(newTable);
+      makeElementDraggable(newTable);
+    }
+  
+    // Add event listener to the "Preview Inside" button
+    document.getElementById('previewButton').addEventListener('click', () => {
+      const boxContent = generateBoxContent();
+      openPreviewInNewTab(boxContent);
+    });
+  
+    // Add event listener to the "Preview Outside" button
+    document.getElementById('previewButtonOutside').addEventListener('click', () => {
+      const boxContent = generateBoxContent();
+      openPreviewInNewTab(boxContent);
+    });
+  
+    function generateBoxContent() {
+      // Generate the HTML content of the box
+      const boxContent = box.innerHTML;
+      return `<!DOCTYPE html>
+  <html>
+  <head>
+  <style>
+    .box {
+      width: 400px;
+      height: 400px;
+      background-color: lightblue;
+      position: relative;
+    }
+    .element {
+      width: 100px;
+      height: 50px;
+      background-color: pink;
+      position: absolute;
+      cursor: move;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .resizable-textbox {
+      resize: both;
+      overflow: auto;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      border: 1px solid black;
+      padding: 4px;
+    }
+  </style>
+  </head>
+  <body>
+    <div class="box">
+      ${boxContent}
+    </div>
+  </body>
+  </html>`;
+    }
+  
+    function openPreviewInNewTab(content) {
+      // Create a Blob containing the HTML content
+      const blob = new Blob([content], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+  
+      // Open the preview in a new tab
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
+

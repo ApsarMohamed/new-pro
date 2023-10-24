@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+
+  .element {
+    width: 50px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+  }
+</style>
+</head>
+<body>
+  <div class="box" id="box">
+    <div class="element" id="element1">Element 1</div>
+    <div class="element" id="element2">Element 2</div>
+    <div class="element" id="element3">Element 3</div>
+  </div>
+
+  <script>
+    const box = document.getElementById('box');
+    const elements = document.querySelectorAll('.element');
+    let isDragging = false;
+    let selectedElement = null;
+
+    elements.forEach((element) => {
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        selectedElement = element;
+        selectedElement.style.zIndex = 1; // Bring the element to the front.
+        const offsetX = e.clientX - element.getBoundingClientRect().left;
+        const offsetY = e.clientY - element.getBoundingClientRect().top;
+
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+            const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+
+            selectedElement.style.left = `${x}px`;
+            selectedElement.style.top = `${y}px`;
+          }
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          selectedElement.style.zIndex = 0; // Reset the z-index.
+          selectedElement = null;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

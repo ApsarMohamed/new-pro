@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .box {
+      width: 400px;
+      height: 400px;
+      background-color: lightblue;
+      position: relative;
+    }
+
+    .element {
+      width: 100px;
+      height: 50px;
+      background-color: pink;
+      position: absolute;
+      cursor: move;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .resizable-textbox {
+      resize: both;
+      overflow: auto;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    td {
+      border: 1px solid black;
+      padding: 4px;
+    }
+  </style>
+</head>
+<body>
+  <button id="previewButton">Preview</button>
+  <div class="box" id="box">
+    <!-- Your HTML elements go here -->
+  </div>
+
+  <script>
+    const box = document.getElementById('box');
+
+    function openPreviewInNewTab(content) {
+      const blob = new Blob([content], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+    }
+
+    document.getElementById('previewButton').addEventListener('click', () => {
+      const boxContent = box.innerHTML;
+      openPreviewInNewTab(generateBoxContent(boxContent));
+    });
+
+    function generateBoxContent(boxContent) {
+      return `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .box {
+      width: 400px;
+      height: 400px;
+      background-color: lightblue;
+      position: relative;
+    }
+
+    .element {
+      width: 100px;
+      height: 50px;
+      background-color: pink;
+      position: absolute;
+      cursor: move;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .resizable-textbox {
+      resize: both;
+      overflow: auto;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    td {
+      border: 1px solid black;
+      padding: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    ${boxContent}
+  </div>
+</body>
+</html>`;
+    }
+  </script>
+</body>
+</html>

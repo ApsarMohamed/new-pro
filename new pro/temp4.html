@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 400px;
+    height: 400px;
+    background-color: lightblue;
+    position: relative;
+  }
+
+  .element {
+    width: 50px;
+    height: 50px;
+    background-color: pink;
+    position: absolute;
+    cursor: move;
+  }
+</style>
+</head>
+<body>
+  <div class="box" id="box">
+    <button onclick="createNewElement()">Create New Element</button>
+  </div>
+
+  <script>
+    function createNewElement() {
+      const box = document.getElementById('box');
+
+      // Create a new div element
+      const newElement = document.createElement('div');
+      newElement.className = 'element';
+      newElement.style.left = '0px'; // You can set the initial position here.
+      newElement.style.top = '0px';
+
+      // Add the new element to the box
+      box.appendChild(newElement);
+
+      // Make the new element draggable
+      makeElementDraggable(newElement);
+    }
+
+    function makeElementDraggable(element) {
+      let isDragging = false;
+
+      element.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        element.style.zIndex = 1; // Bring the element to the front.
+        const offsetX = e.clientX - element.getBoundingClientRect().left;
+        const offsetY = e.clientY - element.getBoundingClientRect().top;
+
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            const x = e.clientX - offsetX - box.getBoundingClientRect().left;
+            const y = e.clientY - offsetY - box.getBoundingClientRect().top;
+
+            element.style.left = `${x}px`;
+            element.style.top = `${y}px`;
+          }
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          element.style.zIndex = 0; // Reset the z-index.
+        });
+      });
+    }
+  </script>
+</body>
+</html>
